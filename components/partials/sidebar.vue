@@ -39,9 +39,15 @@ export default {
           // role: ["writer", "admin"],
         },
         {
+          icon: "fab fa-product-hunt",
+          name: "Class",
+          link: "/class",
+          // role: ["admin"],
+        },
+        {
           icon: "fas fa-users-cog",
-          name: "Users",
-          link: "/users",
+          name: "User",
+          link: "/user",
           // role: ["admin"],
         },
       ],

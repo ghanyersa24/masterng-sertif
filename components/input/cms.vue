@@ -23,7 +23,7 @@ export default {
         plugins: `table image link lists media autoresize 
                   preview media autoresize code emoticons hr 
                   image imagetools`,
-        toolbar: `undo redo | styleselect table emoticons | indent outdent bullist numlist | hr media image | preview code`,
+        toolbar: `undo redo | styleselect table emoticons | indent outdent bullist numlist | hr media | preview code`,
         style_formats: [
           {
             title: "Headers",
@@ -71,39 +71,6 @@ export default {
             ],
           },
         ],
-        image_title: true,
-        automatic_uploads: true,
-        file_picker_types: "image",
-        images_reuse_filename: true,
-        images_upload_credentials: true,
-        images_upload_handler: async function (
-          blobInfo,
-          success,
-          failure,
-          progress
-        ) {
-          const token = localStorage.getItem("auth._token.local");
-          const formData = new FormData();
-          formData.append("src", blobInfo.blob());
-          formData.append("name", blobInfo.filename());
-          try {
-            const {
-              data: { data },
-            } = await axios.post(
-              "https://api.comika.media/api/admin/source",
-              formData,
-              {
-                headers: {
-                  Authorization: token,
-                  "Content-Type": "multipart/form-data",
-                },
-              }
-            );
-            success(data.url);
-          } catch (error) {
-            failure(error.message);
-          }
-        },
       },
     };
   },
