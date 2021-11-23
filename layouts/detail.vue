@@ -28,6 +28,9 @@
                       <li class="list-group-item">
                         <nuxt-link class="nav-link" :to="`/class/${$route.params.classId}/detail/anggota`">Anggota</nuxt-link>
                       </li>
+                      <li class="list-group-item">
+                        <nuxt-link class="nav-link" :to="`/class/${$route.params.classId}/detail/scoring`">Scoring</nuxt-link>
+                      </li>
                     </ul>
                   </div>
                   <div class="col-md-9">
