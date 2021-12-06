@@ -25,9 +25,9 @@
 <script>
 export default {
   mounted() {
-    if (process.browser) {
-      this.$router.push("/");
-    }
+    // if (process.browser) {
+    //   this.$router.push("/");
+    // }
   },
 };
 </script>

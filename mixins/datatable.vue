@@ -1,10 +1,10 @@
 <script>
 export default {
   methods: {
-    renderTable(id = "table_id") {
+    renderTable(id = "table_id", option) {
       if (process.browser) {
         setTimeout(() => {
-          $(`#${id}`).DataTable();
+          $(`#${id}`).DataTable(option);
         }, 500);
       }
     },

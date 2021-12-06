@@ -3,10 +3,10 @@
     <form @submit.prevent="doSubmit">
       <form-save title="Class" />
       <input-text name="name" :val="payload.name" @get="(val)=>payload.name=val" />
-      <input-text name="code" :val="payload.code" @get="(val)=>payload.code=val" />
-      <input-cms name="description" :val="payload.description" @get="(val)=>payload.description=val" />
+      <!-- <input-text name="code" :val="payload.code" @get="(val)=>payload.code=val" /> -->
       <input-text name="Start Date" type="date" :val="payload.startDate" @get="(val)=>payload.startDate=val" />
       <input-text name="End Date" type="date" :val="payload.endDate" @get="(val)=>payload.endDate=val" />
+      <input-cms name="description" :val="payload.description" @get="(val)=>payload.description=val" />
     </form>
 
   </div>
@@ -25,20 +25,20 @@ export default {
     };
   },
   created() {
-    if (this.$route.params.id) this.getDetail();
+    if (this.$route.params.classId) this.getDetail();
   },
   methods: {
     async getDetail() {
       const request = await this.requestGet({
-        url: "class/" + this.$route.params.id,
+        url: "class/" + this.$route.params.classId,
       });
       this.payload = request;
     },
     async doSubmit() {
-      if (this.$route.params.id) {
+      if (this.$route.params.classId) {
         const request = await this.requestPut({
           url: "class",
-          data: { id: this.$route.params.id, ...this.payload },
+          data: { id: this.$route.params.classId, ...this.payload },
         });
         if (request) this.$router.go(-1);
       } else {

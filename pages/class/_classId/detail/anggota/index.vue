@@ -1,7 +1,10 @@
 <template>
   <div>
     <crud-header title="Student" :url="'class/'+this.$route.params.classId+'/detail/anggota'" />
-    <datatable delete-only url="class/join" :direct="'class/'+this.$route.params.classId+'/detail/join'" :thead="header" :data="rows" attrDel="name" @onDelete="(val)=>{getAll()}" />
+    <datatable no-edit no-view :url="`class/join`" :direct="'class/'+this.$route.params.classId+'/detail/join'" :thead="header" :data="rows" attrDel="name" @onDelete="(val)=>{getAll()}" />
+    <div class="text-right">
+      <button class="btn btn-outline-primary" @click="downloadTemplate" type="button">Download Template</button>
+    </div>
   </div>
 </template>
 <script>
@@ -9,7 +12,7 @@ export default {
   layout: "detail",
   data() {
     return {
-      header: ["name", "phone", "email"],
+      header: ["name", "phone", "email", "sertifId"],
       rows: [],
     };
   },
@@ -23,6 +26,9 @@ export default {
         return user;
       });
       this.renderTable();
+    },
+    downloadTemplate() {
+      window.open("http://localhost:3000" + `/template/add.xlsx`);
     },
   },
   fetch() {

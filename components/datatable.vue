@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table id="table_id" class="table table-hover table-striped">
+    <table :id="id" class="table table-hover table-striped">
       <thead>
         <tr>
           <th width="15%">Action</th>
@@ -11,11 +11,10 @@
         <tr v-for="(row, i) in data" :key="i">
           <td>
             <nuxt-link v-if="addView" :to="'/'+to+'/'+row.id+'/detail'" class="btn btn-outline-primary"><i class="fas fa-eye"></i></nuxt-link>
-            
-            <nuxt-link v-if="!justView&&!deleteOnly" :to="'/'+to+'/'+row.id" class="btn btn-outline-primary"><i class="fas fa-edit"></i></nuxt-link>
-            <button v-if="!justView" @click="onDelete(row)" type="button" class="btn btn-outline-danger"> <i class="fas fa-trash"></i> </button>
-            
-            <nuxt-link v-else :to="'/'+to+'/'+row.id" class="btn btn-outline-primary"><i class="fas fa-eye"></i></nuxt-link>
+
+            <nuxt-link v-if="!noEdit" :to="'/'+to+'/'+row.id" class="btn btn-outline-primary"><i class="fas fa-edit"></i></nuxt-link>
+
+            <button v-if="!noDelete" @click="onDelete(row)" type="button" class="btn btn-outline-danger"> <i class="fas fa-trash"></i> </button>
           </td>
           <td v-for="(item,idx) in thead" :key="idx" v-html="row[item]"></td>
         </tr>
@@ -27,15 +26,23 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      default: "table_id",
+    },
     addView: {
       type: Boolean,
       default: false,
     },
-    deleteOnly: {
+    noDelete: {
       type: Boolean,
       default: false,
     },
-    justView: {
+    noView: {
+      type: Boolean,
+      default: false,
+    },
+    noEdit: {
       type: Boolean,
       default: false,
     },

@@ -1,5 +1,7 @@
+import dotenv from "dotenv";
+dotenv.config();
 export default {
-  // ssr: false,
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "ADMIN APPS",

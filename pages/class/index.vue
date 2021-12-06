@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      header: ["name", "code", "startDate", "endDate"],
+      header: ["name", "startDate", "endDate"],
       rows: [],
     };
   },
