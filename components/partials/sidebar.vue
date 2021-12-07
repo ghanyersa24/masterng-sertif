@@ -45,6 +45,12 @@ export default {
           // role: ["admin"],
         },
         {
+          icon: "fas fa-images",
+          name: "Master Sertif",
+          link: "/master-sertif",
+          // role: ["admin"],
+        },
+        {
           icon: "fas fa-users-cog",
           name: "User",
           link: "/user",
